@@ -189,8 +189,8 @@ def most_points_scored
   most_points = 0
   player = 0 
   game_hash.collect do |key, value|
-    value[:players].select do |name, stats|
-      if stats[:points] > most_points
+    value[:players].each do |name, stats|
+      if stats[:points] >= most_points
         most_points = stats[:points] 
         player = name 
       end
@@ -248,9 +248,7 @@ def long_name_steals_a_ton?
       end
     end
   end
-  
   bigger_name_steals == highest_steals ? true : false
-  
 end
 
 
